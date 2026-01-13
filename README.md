@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1 style="border-bottom: none; display: inline-block;">
-    <img src="figures/stepfun.svg" alt="StepFun Logo" height="30" style="vertical-align: middle; margin-right: 10px;"/>
+    <img src="figures/stepfun.svg" alt="StepFun Logo" height="60" style="vertical-align: middle; margin-right: 10px;"/>
     <span style="vertical-align: middle;">STEP3-VL-10B</span>
 </h1>
 
