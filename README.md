@@ -1,10 +1,11 @@
 <div align="center">
 
-<h1 style="border-bottom: none; display: inline-block;">
-    <img src="figures/stepfun.svg" alt="StepFun Logo" height="100" style="vertical-align: middle; margin-right: 10px;"/>
-    <span style="vertical-align: middle;">STEP3-VL-10B</span>
-</h1>
-
+<div align="center">
+  <h1 style="border-bottom: none;">
+    <img src="figures/stepfun.svg" width="30" style="vertical-align: bottom; margin-right: 10px;" /> 
+    STEP3-VL-10B
+  </h1>
+</div>
 
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HF-StepFun/STEP3--VL--10B-blue)](https://huggingface.co/stepfun-ai/Step3-VL-10B)
 [![ModelScope](https://img.shields.io/badge/ModelScope-StepFun/STEP3--VL--10B-624aff)](https://modelscope.cn/models/stepfun-ai/Step3-VL-10B)
