@@ -7,9 +7,9 @@
   </h1>
 </div>
 
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HF-StepFun/STEP3--VL--10B-blue)](https://huggingface.co/stepfun-ai/Step3-VL-10B)
-[![ModelScope](https://img.shields.io/badge/ModelScope-StepFun/STEP3--VL--10B-624aff)](https://modelscope.cn/models/stepfun-ai/Step3-VL-10B)
-[![Paper](https://img.shields.io/badge/Paper-Arx∂iv-red)](https://stepfun-ai.github.io/Step3-VL-10B)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HF-StepFun/STEP3--VL--10B-blue)](https://huggingface.co/collections/stepfun-ai/Step3-VL-10B)
+[![ModelScope](https://img.shields.io/badge/ModelScope-StepFun/STEP3--VL--10B-624aff)](https://modelscope.cn/collections/stepfun-ai/Step3-VL-10B)
+[![Paper](https://img.shields.io/badge/Paper-Arx∂iv-red)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-green)]()
 
 [**Introduction**](#introduction) | [**Performance**](#performance) | [**Quick Start**](#quick-start) | [**Citation**](#citation)
