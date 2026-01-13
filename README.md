@@ -34,8 +34,9 @@ The success of STEP3-VL-10B is driven by two key strategic designs:
 
 | Model Name | Type | Hugging Face | ModelScope |
 |:-----------|:-----|:------------:|:----------:|
-| **STEP3-VL-10B** | Chat | [🤗 Download](https://huggingface.co/stepfun-ai/Step3-VL-10B) | [🤖 Download](https://modelscope.cn/models/stepfun-ai/Step3-VL-10B) |
 | **STEP3-VL-10B-Base** | Base | [🤗 Download](https://huggingface.co/stepfun-ai/Step3-VL-10B-Base) | [🤖 Download](https://modelscope.cn/models/stepfun-ai/Step3-VL-10B-Base) |
+| **STEP3-VL-10B** | Chat | [🤗 Download](https://huggingface.co/stepfun-ai/Step3-VL-10B) | [🤖 Download](https://modelscope.cn/models/stepfun-ai/Step3-VL-10B) |
+
 
 ## 📊 Performance
 
