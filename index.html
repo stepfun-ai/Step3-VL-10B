@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step3-VL-10B: Compact Yet Frontier Multimodal Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+
+<body class="theme-a">
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-group">
+                <img src="./logo.png" alt="Step3-VL-10B" class="logo">
+            </div>
+            <nav class="nav">
+                <a href="#benchmark" data-i18n="nav.benchmark">Benchmark</a>
+                <a href="#showcase" data-i18n="nav.showcase">Showcase</a>
+                <a href="#method" data-i18n="nav.method">Method</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-ghost" id="theme-toggle" onclick="toggleTheme()">
+                    <span id="theme-label">🌙</span>
+                </button>
+                <button class="btn-ghost" id="lang-toggle" onclick="toggleLang()">
+                    <span id="lang-label">EN</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-header">
+                    <h1 class="hero-title-large">
+                        <span class="title-static">Step3-VL-10B:&nbsp;</span><span class="title-typed"
+                            id="typed-text"></span><span class="typed-cursor">|</span>
+                    </h1>
+                    <p class="hero-meta">10B Parameters · 2026-01 · StepFun</p>
+                    <div class="hero-links">
+                        <a href="https://github.com/stepfun-ai/Step3-VL-10B" class="link-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://huggingface.co/stepfun-ai/Step3-VL-10B" class="link-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                            HuggingFace
+                        </a>
+                        <a href="https://modelscope.cn/models/stepfun-ai/Step3-VL-10B" class="link-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                            </svg>
+                            ModelScope
+                        </a>
+                        <a href="" class="link-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                            </svg>
+                            Paper
+                        </a>
+                    </div>
+                </div>
+                <div class="teaser-chart-container">
+                    <div class="teaser-chart-header">
+                        <h2 class="teaser-chart-title">Frontier Performance, Minimal Cost</h2>
+                        <p class="teaser-chart-subtitle">Average Benchmark Score vs Model Size</p>
+                        <p class="teaser-chart-note">Average of: MMMU, MathVision, MathVista, MMBench (EN), MMBench (CN)</p>
+                        <!-- <h2 class="teaser-chart-title">Average Score vs Model Size</h2> -->
+                    </div>
+                    <div class="teaser-chart-wrapper">
+                        <div class="teaser-chart-area" id="teaserChartArea">
+                            <div class="teaser-y-axis">
+                                <div class="teaser-axis-label">Avg Score</div>
+                                <div class="teaser-axis-ticks" id="teaserYTicks"></div>
+                            </div>
+                            <div class="teaser-plot-area" id="teaserPlotArea">
+                                <div class="teaser-grid-lines" id="teaserGridLines"></div>
+                                <div class="teaser-closed-ref-lines" id="teaserClosedRefLines"></div>
+                                <div class="teaser-data-points" id="teaserDataPoints"></div>
+                            </div>
+                            <div class="teaser-x-axis">
+                                <div class="teaser-axis-ticks" id="teaserXTicks"></div>
+                                <div class="teaser-axis-label">Parameters (B)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teaser-chart-legend">
+                        <div class="teaser-legend-item teaser-legend-highlight">
+                            <div class="teaser-legend-shape">
+                                <div class="teaser-legend-square highlight"></div>
+                            </div>
+                            <span>Step3-VL-10B (SeRe)</span>
+                        </div>
+                        <div class="teaser-legend-item teaser-legend-pacore">
+                            <div class="teaser-legend-shape">
+                                <div class="teaser-legend-square pacore"></div>
+                            </div>
+                            <span>Step3-VL-10B (PaCoRe)</span>
+                        </div>
+                        <div class="teaser-legend-item">
+                            <div class="teaser-legend-shape">
+                                <div class="teaser-legend-square"></div>
+                            </div>
+                            <span>7-10B Models</span>
+                        </div>
+                        <div class="teaser-legend-item">
+                            <div class="teaser-legend-shape">
+                                <div class="teaser-legend-circle"></div>
+                            </div>
+                            <span>Flagship Models</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="abstract-block">
+                    <p class="paragraph" data-i18n="abstract.p1"><strong class="highlight-brand">Step3.5-Turbo</strong>
+                        是一款面向生产的推理引擎，目标是在不堆算力的前提下提供顶级智能。通过<em>稀疏 MoE 架构</em>（11B 激活参数）与高效 <em>3:1 SWA 策略</em>（窗口
+                        512），显著降低注意力开销，实现低延迟、低成本的长上下文推理，为复杂自主 Agent 工作流而生。</p>
+                    <div class="contrib-section">
+                        <h4 class="contrib-title" data-i18n="section.contrib">核心亮点</h4>
+                        <ul class="contrib-list">
+                            <li class="contrib-item" data-i18n="contrib.1">11B 激活参数（稀疏 MoE），更高"智能密度"</li>
+                            <li class="contrib-item" data-i18n="contrib.2">3:1 SWA（窗口 512），大幅降低注意力复杂度与推理成本</li>
+                            <li class="contrib-item" data-i18n="contrib.3">竞赛数学：AIME 2025 95.9、HMMT（2025 年 2 月）97.1</li>
+                            <li class="contrib-item" data-i18n="contrib.4">Agent 工作流：τ²-Bench 87.5</li>
+                            <li class="contrib-item" data-i18n="contrib.5">工业级任务：SWE-bench Verified 72.1、Terminal-bench
+                                2.0 43.0</li>
+                        </ul>
+                    </div>
+                    <div class="cite-box">
+                        <span class="cite-label" data-i18n="cite.label">How to cite</span>
+                        <button class="btn-copy" onclick="copyBibtex()" data-i18n="cite.copy">Copy BibTeX</button>
+                    </div>
+                </div> -->
+                <div class="abstract-block">
+                    <p class="paragraph" data-i18n="abstract.p1"><strong>Step3-VL-10B</strong>
+                        是一款轻量级开源基础模型，旨在重新定义<em>紧凑高效</em>与<em>前沿多模态智能</em>之间的权衡。尽管仅有 <strong>10B 参数</strong>，STEP3-VL-10B
+                        在<em>视觉感知</em>、<em>复杂推理</em>和<em>人类对齐</em>方面表现卓越。</p>
+                    <p class="paragraph" data-i18n="abstract.p2">该模型在 10B 规模以下的模型中始终表现最优，并能媲美甚至超越规模大 <em>10×–20×</em>
+                        的开源模型（如 GLM-4.6V
+                        106B-A12B、Qwen3-VL-Thinking 235B-A22B）以及顶级闭源旗舰模型（如 Gemini 2.5 Pro、Seed-1.5-VL）。</p>
+                    <p class="paragraph" data-i18n="abstract.p3">Step3-VL-10B 的成功源于两大核心设计：<em>高质量多模态语料库的统一预训练</em>（1.2T
+                        tokens）与<em>规模化多模态强化学习</em>（超过 1,400 次 RL 迭代），并引入 <em>Parallel Coordinated Reasoning
+                            (PaCoRe)</em>
+                        实现并行视觉探索的证据聚合。</p>
+                    <!-- <div class="contrib-section">
+                        <h4 class="contrib-title" data-i18n="section.contrib">核心亮点</h4>
+                        <ul class="contrib-list">
+                            <li class="contrib-item" data-i18n="contrib.1">开源基础模型与指令微调版本，支持完整微调与自定义部署</li>
+                            <li class="contrib-item" data-i18n="contrib.2">STEM 推理、视觉感知、GUI & OCR、空间理解等多项能力</li>
+                            <li class="contrib-item" data-i18n="contrib.3">在 AIME 2025 达到 94.43%，MathVision
+                                达到75.95%（PaCoRe模式）</li>
+                        </ul>
+                    </div> -->
+                    <!-- <p class="paragraph contrib-inline"><strong data-i18n="section.contrib">Contributions</strong>:
+                        <span data-i18n="contrib.1">开源基础模型与指令微调版本，支持完整微调与自定义部署</span>；<span data-i18n="contrib.2">STEM
+                            推理、视觉感知、GUI &
+                            OCR、空间理解等多项能力</span>；<span data-i18n="contrib.3">在 AIME 2025 达到 94.43%，MathVision 达到
+                            75.95%（PaCoRe
+                            模式）</span>。
+                    </p> -->
+                    <!-- <div class="cite-box">
+                        <span class="cite-label" data-i18n="cite.label">How to cite</span>
+                        <button class="btn-copy" onclick="copyBibtex()" data-i18n="cite.copy">Copy BibTeX</button>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <section id="benchmark" class="section">
+            <div class="container-full">
+                <h2 class="section-title" data-i18n="section.benchmark">Benchmark</h2>
+
+                <div class="bar-charts-container">
+                    <div class="bar-charts-header">
+                        <h3 class="bar-charts-title">Benchmark Performance by Category</h3>
+                        <p class="bar-charts-subtitle">Performance across MMMU, MathVista, MathVision, MMBench, AIME2025, and MultiChallenge benchmarks</p>
+                    </div>
+                    <div class="bar-charts-stack">
+                        <div class="bar-chart-panel" id="mmmuChart">
+                            <div class="bar-panel-header">
+                                <h4 class="bar-panel-title">MMMU</h4>
+                                <span class="bar-panel-badge">Multimodal</span>
+                            </div>
+                            <div class="bar-chart-area">
+                                <div class="bar-y-axis" id="mmmuYAxis"></div>
+                                <div class="bar-plot" id="mmmuPlot">
+                                    <div class="bar-section-label bar-open-label">7-10B Models</div>
+                                    <div class="bar-section-label bar-closed-label">Flagship Models</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-chart-panel" id="mathVistaChart">
+                            <div class="bar-panel-header">
+                                <h4 class="bar-panel-title">MathVista</h4>
+                                <span class="bar-panel-badge">Multimodal</span>
+                            </div>
+                            <div class="bar-chart-area">
+                                <div class="bar-y-axis" id="mathVistaYAxis"></div>
+                                <div class="bar-plot" id="mathVistaPlot">
+                                    <div class="bar-section-label bar-open-label">7-10B Models</div>
+                                    <div class="bar-section-label bar-closed-label">Flagship Models</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-chart-panel" id="mathVisionChart">
+                            <div class="bar-panel-header">
+                                <h4 class="bar-panel-title">MathVision</h4>
+                                <span class="bar-panel-badge">Multimodal</span>
+                            </div>
+                            <div class="bar-chart-area">
+                                <div class="bar-y-axis" id="mathVisionYAxis"></div>
+                                <div class="bar-plot" id="mathVisionPlot">
+                                    <div class="bar-section-label bar-open-label">7-10B Models</div>
+                                    <div class="bar-section-label bar-closed-label">Flagship Models</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-chart-panel" id="mmbenchChart">
+                            <div class="bar-panel-header">
+                                <h4 class="bar-panel-title">MMBench</h4>
+                                <span class="bar-panel-badge">Multimodal</span>
+                            </div>
+                            <div class="bar-chart-area">
+                                <div class="bar-y-axis" id="mmbenchYAxis"></div>
+                                <div class="bar-plot" id="mmbenchPlot">
+                                    <div class="bar-section-label bar-open-label">7-10B Models</div>
+                                    <div class="bar-section-label bar-closed-label">Flagship Models</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-chart-panel" id="aime2025Chart">
+                            <div class="bar-panel-header">
+                                <h4 class="bar-panel-title">AIME2025</h4>
+                                <span class="bar-panel-badge">Text</span>
+                            </div>
+                            <div class="bar-chart-area">
+                                <div class="bar-y-axis" id="aime2025YAxis"></div>
+                                <div class="bar-plot" id="aime2025Plot">
+                                    <div class="bar-section-label bar-open-label">7-10B Models</div>
+                                    <div class="bar-section-label bar-closed-label">Flagship Models</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-chart-panel" id="multiChallengeChart">
+                            <div class="bar-panel-header">
+                                <h4 class="bar-panel-title">MultiChallenge</h4>
+                                <span class="bar-panel-badge">Text</span>
+                            </div>
+                            <div class="bar-chart-area">
+                                <div class="bar-y-axis" id="multiChallengeYAxis"></div>
+                                <div class="bar-plot" id="multiChallengePlot">
+                                    <div class="bar-section-label bar-open-label">7-10B Models</div>
+                                    <div class="bar-section-label bar-closed-label">Flagship Models</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-charts-legend">
+                        <div class="bar-legend-section">
+                            <span class="bar-legend-label">7-10B Models:</span>
+                            <div class="bar-legend-item bar-highlight">
+                                <span class="bar-legend-bar"></span>
+                                <span>Step3-VL-10B (SeRe)</span>
+                            </div>
+                            <div class="bar-legend-item bar-pacore">
+                                <span class="bar-legend-bar bar-pacore"></span>
+                                <span>Step3-VL-10B (PaCoRe)</span>
+                            </div>
+                            <div class="bar-legend-item">
+                                <span class="bar-legend-bar bar-open"></span>
+                                <span>Others</span>
+                            </div>
+                        </div>
+                        <div class="bar-legend-divider"></div>
+                        <div class="bar-legend-section">
+                            <span class="bar-legend-label">Flagship Models:</span>
+                            <div class="bar-legend-item bar-closed">
+                                <span class="bar-legend-bar bar-closed"></span>
+                                <span>Gemini 2.5 Pro / Seed-1.5-VL / GLM-4.6V (106B-A12B) / Qwen3-VL (235B-A22B)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="section-intro" data-i18n="bmk.intro">评测采用"<em>STEM 推理、识别、OCR & 文档、GUI
+                        Grounding、空间理解、代码</em>"等核心维度，以横向对比方式呈现多个同行模型的分数差异。对比表格强调<em>统计口径一致性</em>：同一数据集版本、统一评测脚本、固定温度与采样参数。
+                </p>
+                <div class="bmk-table-wrap">
+                    <table class="bmk-table">
+                        <thead>
+                            <tr>
+                                <th class="bmk-th-benchmark" rowspan="2">Benchmark</th>
+                                <th class="bmk-th-air" colspan="2">STEP3-VL-10B</th>
+                                <th rowspan="2">GLM-4.6V</th>
+                                <th rowspan="2">Qwen3-VL</th>
+                                <th rowspan="2">Gemini-2.5 Pro</th>
+                                <th rowspan="2">Seed-1.5-VL</th>
+                            </tr>
+                            <tr>
+                                <th class="bmk-th-air bmk-th-sere">SeRe</th>
+                                <th class="bmk-th-air bmk-th-pacore">PaCoRe</th>
+                            </tr>
+                            <tr class="bmk-row-params">
+                                <td></td>
+                                <td class="bmk-col-air bmk-col-sere"><em>10B</em></td>
+                                <td class="bmk-col-air bmk-col-pacore"><em>10B</em></td>
+                                <td><em>106B-A12B</em></td>
+                                <td><em>235B-A22B</em></td>
+                                <td><em>—</em></td>
+                                <td><em>—</em></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">STEM / Multimodal Reasoning</td>
+                            </tr>
+                            <tr>
+                                <td>MMMU</td>
+                                <td class="bmk-col-sere">78.11</td>
+                                <td class="bmk-col-pacore">80.11</td>
+                                <td>75.20</td>
+                                <td>78.70</td>
+                                <td><strong>83.89</strong></td>
+                                <td>79.11</td>
+                            </tr>
+                            <tr>
+                                <td>MMMU-Pro</td>
+                                <td class="bmk-col-sere">64.08</td>
+                                <td class="bmk-col-pacore">67.18</td>
+                                <td>65.84</td>
+                                <td>72.37</td>
+                                <td><strong>76.96</strong></td>
+                                <td>70.60</td>
+                            </tr>
+                            <tr>
+                                <td>MathVision</td>
+                                <td class="bmk-col-sere">70.81</td>
+                                <td class="bmk-col-pacore"><strong>75.95</strong></td>
+                                <td>63.50*</td>
+                                <td>72.10</td>
+                                <td>73.30*</td>
+                                <td>68.70*</td>
+                            </tr>
+                            <tr>
+                                <td>MathVista</td>
+                                <td class="bmk-col-sere">83.97</td>
+                                <td class="bmk-col-pacore">85.50</td>
+                                <td>83.51</td>
+                                <td>85.10</td>
+                                <td>83.88</td>
+                                <td><strong>85.60</strong></td>
+                            </tr>
+                            <tr>
+                                <td>LogicVista</td>
+                                <td class="bmk-col-sere">66.89</td>
+                                <td class="bmk-col-pacore">71.36</td>
+                                <td>64.88</td>
+                                <td><strong>73.15</strong></td>
+                                <td>69.80</td>
+                                <td>72.93</td>
+                            </tr>
+                            <tr>
+                                <td>DynaMath</td>
+                                <td class="bmk-col-sere">56.39</td>
+                                <td class="bmk-col-pacore"><strong>61.48</strong></td>
+                                <td>56.29</td>
+                                <td>60.30</td>
+                                <td>52.30</td>
+                                <td>58.88</td>
+                            </tr>
+                            <tr>
+                                <td>ZeroBench (main)</td>
+                                <td class="bmk-col-sere">1.00</td>
+                                <td class="bmk-col-pacore"><strong>5.00</strong></td>
+                                <td>1.00</td>
+                                <td>3.00</td>
+                                <td>4.00</td>
+                                <td>1.00</td>
+                            </tr>
+                            <tr>
+                                <td>ZeroBench (sub)</td>
+                                <td class="bmk-col-sere">27.54</td>
+                                <td class="bmk-col-pacore">29.94</td>
+                                <td>29.04</td>
+                                <td>28.40</td>
+                                <td><strong>33.53</strong></td>
+                                <td>31.74</td>
+                            </tr>
+                            <tr>
+                                <td>MathVerse (vision)</td>
+                                <td class="bmk-col-sere">75.73</td>
+                                <td class="bmk-col-pacore"><strong>78.30</strong></td>
+                                <td>72.84</td>
+                                <td>76.65</td>
+                                <td>78.30</td>
+                                <td>77.79</td>
+                            </tr>
+                            <tr>
+                                <td>We-Math</td>
+                                <td class="bmk-col-sere">73.03</td>
+                                <td class="bmk-col-pacore">73.90</td>
+                                <td>71.14</td>
+                                <td>74.70</td>
+                                <td><strong>80.10</strong></td>
+                                <td>79.05</td>
+                            </tr>
+                            <tr>
+                                <td>VisuLogic</td>
+                                <td class="bmk-col-sere">29.68</td>
+                                <td class="bmk-col-pacore">32.70</td>
+                                <td>28.30</td>
+                                <td>31.80</td>
+                                <td>31.40</td>
+                                <td><strong>34.30</strong></td>
+                            </tr>
+                            <tr>
+                                <td>PhyX</td>
+                                <td class="bmk-col-sere">59.45</td>
+                                <td class="bmk-col-pacore">66.01</td>
+                                <td>59.70</td>
+                                <td>66.30</td>
+                                <td><strong>67.56</strong></td>
+                                <td>62.53</td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">Recognition / General VQA</td>
+                            </tr>
+                            <tr>
+                                <td>MMBench (EN)</td>
+                                <td class="bmk-col-sere">92.05</td>
+                                <td class="bmk-col-pacore">92.38</td>
+                                <td>92.75</td>
+                                <td>92.70</td>
+                                <td><strong>93.19</strong></td>
+                                <td>92.11</td>
+                            </tr>
+                            <tr>
+                                <td>MMBench (CN)</td>
+                                <td class="bmk-col-sere">91.55</td>
+                                <td class="bmk-col-pacore">91.96</td>
+                                <td>91.88</td>
+                                <td>91.80</td>
+                                <td><strong>93.13</strong></td>
+                                <td>91.76</td>
+                            </tr>
+                            <tr>
+                                <td>SimpleVQA</td>
+                                <td class="bmk-col-sere">53.08</td>
+                                <td class="bmk-col-pacore">54.64</td>
+                                <td>57.95</td>
+                                <td>59.30</td>
+                                <td><strong>66.85</strong></td>
+                                <td>64.72</td>
+                            </tr>
+                            <tr>
+                                <td>MMStar</td>
+                                <td class="bmk-col-sere">77.48</td>
+                                <td class="bmk-col-pacore">77.64</td>
+                                <td>75.30</td>
+                                <td>76.80</td>
+                                <td><strong>79.18</strong></td>
+                                <td>77.91</td>
+                            </tr>
+                            <tr>
+                                <td>HallusionBench</td>
+                                <td class="bmk-col-sere">64.91</td>
+                                <td class="bmk-col-pacore">64.54</td>
+                                <td>60.63</td>
+                                <td>65.58</td>
+                                <td><strong>65.63</strong></td>
+                                <td>64.13</td>
+                            </tr>
+                            <tr>
+                                <td>MMVP</td>
+                                <td class="bmk-col-sere">68.16</td>
+                                <td class="bmk-col-pacore">68.00</td>
+                                <td>71.33</td>
+                                <td>71.30</td>
+                                <td>70.67</td>
+                                <td><strong>74.00</strong></td>
+                            </tr>
+                            <tr>
+                                <td>ReMI</td>
+                                <td class="bmk-col-sere">67.29</td>
+                                <td class="bmk-col-pacore">69.12</td>
+                                <td>64.42</td>
+                                <td><strong>74.70</strong></td>
+                                <td>71.69</td>
+                                <td>72.19</td>
+                            </tr>
+                            <tr>
+                                <td>M3GIA</td>
+                                <td class="bmk-col-sere">78.33</td>
+                                <td class="bmk-col-pacore">73.50</td>
+                                <td>78.72</td>
+                                <td>81.00</td>
+                                <td>83.11</td>
+                                <td><strong>83.22</strong></td>
+                            </tr>
+                            <tr>
+                                <td>DoYouSeeMe</td>
+                                <td class="bmk-col-sere">67.48</td>
+                                <td class="bmk-col-pacore">68.54</td>
+                                <td>67.50</td>
+                                <td><strong>72.89</strong></td>
+                                <td>71.19</td>
+                                <td>71.94</td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">Counting</td>
+                            </tr>
+                            <tr>
+                                <td>CountBench</td>
+                                <td class="bmk-col-sere">88.75</td>
+                                <td class="bmk-col-pacore">88.80</td>
+                                <td>92.06</td>
+                                <td><strong>92.46</strong></td>
+                                <td>87.78</td>
+                                <td>91.85</td>
+                            </tr>
+                            <tr>
+                                <td>CountQA</td>
+                                <td class="bmk-col-sere">33.69</td>
+                                <td class="bmk-col-pacore">38.29</td>
+                                <td>36.32</td>
+                                <td>45.62</td>
+                                <td>38.02</td>
+                                <td><strong>48.89</strong></td>
+                            </tr>
+                            <tr>
+                                <td>PixMo-Count</td>
+                                <td class="bmk-col-sere">70.85</td>
+                                <td class="bmk-col-pacore">71.61</td>
+                                <td>76.47</td>
+                                <td>79.80</td>
+                                <td>75.54</td>
+                                <td><strong>83.38</strong></td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">OCR</td>
+                            </tr>
+                            <tr>
+                                <td>OCRBench</td>
+                                <td class="bmk-col-sere">86.75</td>
+                                <td class="bmk-col-pacore"><strong>89.00</strong></td>
+                                <td>86.20</td>
+                                <td>87.30</td>
+                                <td>85.90</td>
+                                <td>85.20</td>
+                            </tr>
+                            <tr>
+                                <td>OmniOCR</td>
+                                <td class="bmk-col-sere">76.98</td>
+                                <td class="bmk-col-pacore">78.14</td>
+                                <td>84.53</td>
+                                <td>87.20</td>
+                                <td>66.05</td>
+                                <td><strong>87.80</strong></td>
+                            </tr>
+                            <tr>
+                                <td>CC-OCR (Multi-Lang-OCR)</td>
+                                <td class="bmk-col-sere">76.59</td>
+                                <td class="bmk-col-pacore">77.51</td>
+                                <td>74.08</td>
+                                <td>80.80</td>
+                                <td><strong>81.10</strong></td>
+                                <td>78.82</td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">2D / 3D Spatial Understanding</td>
+                            </tr>
+                            <tr>
+                                <td>BLINK</td>
+                                <td class="bmk-col-sere">66.79</td>
+                                <td class="bmk-col-pacore">67.39</td>
+                                <td>68.17</td>
+                                <td>67.12</td>
+                                <td><strong>72.01</strong></td>
+                                <td>71.54</td>
+                            </tr>
+                            <tr>
+                                <td>CVBench</td>
+                                <td class="bmk-col-sere">83.49</td>
+                                <td class="bmk-col-pacore">85.92</td>
+                                <td>83.72</td>
+                                <td><strong>87.86</strong></td>
+                                <td>84.36</td>
+                                <td>86.27</td>
+                            </tr>
+                            <tr>
+                                <td>MMSI-Bench</td>
+                                <td class="bmk-col-sere">32.18</td>
+                                <td class="bmk-col-pacore">36.40</td>
+                                <td>30.80</td>
+                                <td>32.50</td>
+                                <td><strong>40.40</strong></td>
+                                <td>30.60</td>
+                            </tr>
+                            <tr>
+                                <td>ERQA</td>
+                                <td class="bmk-col-sere">48.87</td>
+                                <td class="bmk-col-pacore">51.75</td>
+                                <td>47.75</td>
+                                <td>53.50</td>
+                                <td><strong>62.25</strong></td>
+                                <td>48.50</td>
+                            </tr>
+                            <tr>
+                                <td>OmniSpatial</td>
+                                <td class="bmk-col-sere">51.58</td>
+                                <td class="bmk-col-pacore">52.58</td>
+                                <td>50.49</td>
+                                <td>53.10</td>
+                                <td><strong>55.64</strong></td>
+                                <td>51.99</td>
+                            </tr>
+                            <tr>
+                                <td>All-Angles-Bench</td>
+                                <td class="bmk-col-sere">57.21</td>
+                                <td class="bmk-col-pacore">64.71</td>
+                                <td>62.94</td>
+                                <td>60.59</td>
+                                <td><strong>65.88</strong></td>
+                                <td>57.65</td>
+                            </tr>
+                            <tr>
+                                <td>MindCube-tiny</td>
+                                <td class="bmk-col-sere">62.81</td>
+                                <td class="bmk-col-pacore">68.58</td>
+                                <td>52.83</td>
+                                <td>47.58</td>
+                                <td>58.92</td>
+                                <td><strong>39.83</strong></td>
+                            </tr>
+                            <tr>
+                                <td>RealWorldQA</td>
+                                <td class="bmk-col-sere">74.44</td>
+                                <td class="bmk-col-pacore">75.56</td>
+                                <td>77.78</td>
+                                <td>78.80</td>
+                                <td>77.78</td>
+                                <td><strong>79.61</strong></td>
+                            </tr>
+                            <tr>
+                                <td>SpatialViz-Bench</td>
+                                <td class="bmk-col-sere">45.51</td>
+                                <td class="bmk-col-pacore"><strong>52.03</strong></td>
+                                <td>37.46</td>
+                                <td>46.36</td>
+                                <td>45.34</td>
+                                <td>35.25</td>
+                            </tr>
+                            <tr>
+                                <td>STARE</td>
+                                <td class="bmk-col-sere">61.75</td>
+                                <td class="bmk-col-pacore">64.57</td>
+                                <td>60.38</td>
+                                <td><strong>70.89</strong></td>
+                                <td>62.36</td>
+                                <td>62.99</td>
+                            </tr>
+                            <tr>
+                                <td>CoreCognition</td>
+                                <td class="bmk-col-sere">66.69</td>
+                                <td class="bmk-col-pacore">71.54</td>
+                                <td>69.50</td>
+                                <td>72.66</td>
+                                <td><strong>78.78</strong></td>
+                                <td>72.38</td>
+                            </tr>
+                            <tr>
+                                <td>V*</td>
+                                <td class="bmk-col-sere">82.85</td>
+                                <td class="bmk-col-pacore">84.29</td>
+                                <td>85.86</td>
+                                <td>89.53</td>
+                                <td>80.63</td>
+                                <td><strong>90.58</strong></td>
+                            </tr>
+                            <tr>
+                                <td>ViewSpatial</td>
+                                <td class="bmk-col-sere">46.14</td>
+                                <td class="bmk-col-pacore">48.41</td>
+                                <td>43.87</td>
+                                <td><strong>48.58</strong></td>
+                                <td>44.15</td>
+                                <td>44.14</td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">Exam (Text-Centric)</td>
+                            </tr>
+                            <tr>
+                                <td>MMLU-Pro</td>
+                                <td class="bmk-col-sere">76.02</td>
+                                <td class="bmk-col-pacore">77.09</td>
+                                <td>79.96</td>
+                                <td>83.75</td>
+                                <td><strong>86.45</strong></td>
+                                <td>83.39</td>
+                            </tr>
+                            <tr>
+                                <td>GPQA-Diamond</td>
+                                <td class="bmk-col-sere">70.83</td>
+                                <td class="bmk-col-pacore">73.99</td>
+                                <td>69.19</td>
+                                <td>77.68</td>
+                                <td><strong>84.06</strong></td>
+                                <td>71.91</td>
+                            </tr>
+                            <tr>
+                                <td>SuperGPQA</td>
+                                <td class="bmk-col-sere">50.38</td>
+                                <td class="bmk-col-pacore">53.15</td>
+                                <td>53.28</td>
+                                <td>64.20</td>
+                                <td><strong>65.00</strong></td>
+                                <td>60.50</td>
+                            </tr>
+                            <tr>
+                                <td>LiveBench (2024-11-25)</td>
+                                <td class="bmk-col-sere">69.71</td>
+                                <td class="bmk-col-pacore">71.69</td>
+                                <td>62.75</td>
+                                <td><strong>80.14</strong></td>
+                                <td>76.34</td>
+                                <td>65.62</td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">Mathematics (Text-Centric)</td>
+                            </tr>
+                            <tr>
+                                <td>AIME 2024</td>
+                                <td class="bmk-col-sere">90.94</td>
+                                <td class="bmk-col-pacore"><strong>93.33</strong></td>
+                                <td>80.63</td>
+                                <td>91.93</td>
+                                <td>79.53</td>
+                                <td>79.48</td>
+                            </tr>
+                            <tr>
+                                <td>AIME 2025</td>
+                                <td class="bmk-col-sere">87.66</td>
+                                <td class="bmk-col-pacore"><strong>94.43</strong></td>
+                                <td>71.88</td>
+                                <td>83.59</td>
+                                <td>83.96</td>
+                                <td>64.06</td>
+                            </tr>
+                            <tr>
+                                <td>HMMT 2025</td>
+                                <td class="bmk-col-sere">78.18</td>
+                                <td class="bmk-col-pacore"><strong>92.14</strong></td>
+                                <td>57.29</td>
+                                <td>67.71</td>
+                                <td>65.68</td>
+                                <td>51.30</td>
+                            </tr>
+                            <tr>
+                                <td>CNMO 2024</td>
+                                <td class="bmk-col-sere">78.20</td>
+                                <td class="bmk-col-pacore">81.17</td>
+                                <td>72.11</td>
+                                <td><strong>88.36</strong></td>
+                                <td>74.53</td>
+                                <td>83.67</td>
+                            </tr>
+                            <tr>
+                                <td>Beyond AIME</td>
+                                <td class="bmk-col-sere">63.23</td>
+                                <td class="bmk-col-pacore"><strong>74.00</strong></td>
+                                <td>39.83</td>
+                                <td>57.42</td>
+                                <td>54.45</td>
+                                <td>42.83</td>
+                            </tr>
+                            <tr>
+                                <td>IMO-AnswerBench</td>
+                                <td class="bmk-col-sere">62.12</td>
+                                <td class="bmk-col-pacore"><strong>76.66</strong></td>
+                                <td>51.25</td>
+                                <td>69.25</td>
+                                <td>72.00</td>
+                                <td>44.75</td>
+                            </tr>
+                            <tr class="bmk-row-divider">
+                                <td colspan="7">Code</td>
+                            </tr>
+                            <tr>
+                                <td>LiveCodeBench (2408-2505)</td>
+                                <td class="bmk-col-sere">75.77</td>
+                                <td class="bmk-col-pacore"><strong>76.43</strong></td>
+                                <td>48.71</td>
+                                <td>69.45</td>
+                                <td>72.01</td>
+                                <td>57.10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="bmk-note" data-i18n="bmk.note.detail">注：<strong>SeRe</strong> (Sequential Reasoning) 使用最大 64K
+                    tokens；<strong>PaCoRe</strong> (Parallel Coordinated Reasoning) 聚合 16 个并行 rollouts，最大 128K
+                    tokens。测试采用: temperature=1, top_p=1, top_k=0。</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="showcase" class="section">
+            <div class="container-wide">
+                <h2 class="section-title" data-i18n="section.showcase">Showcase</h2>
+                <p class="section-intro" data-i18n="showcase.intro">Showcase 通过真实案例展示 Step3-VL-10B 的多模态推理能力：Case 1
+                    聚焦莫尔斯电码表格解析，其他案例覆盖GUI感知与视觉识别和推理。</p>
+
+                <div class="carousel-nav-tabs">
+                    <button class="carousel-nav-btn active" data-index="0" data-i18n="showcase.cat1">2.1 莫尔斯推理</button>
+                    <button class="carousel-nav-btn" data-index="1" data-i18n="showcase.cat2">2.2 GUI 感知</button>
+                    <button class="carousel-nav-btn" data-index="2" data-i18n="showcase.cat3">2.3 视觉识别</button>
+                    <button class="carousel-nav-btn" data-index="3" data-i18n="showcase.cat4">2.4 图推理</button>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-item" data-index="0" data-pos="0">
+                            <div class="carousel-item-header">
+                                <div class="carousel-item-title" data-i18n="showcase.cat1">2.1 莫尔斯推理 / Morse Reasoning
+                                </div>
+                                <div class="case-pill">CASE 1</div>
+                            </div>
+
+                            <div class="carousel-demo-user">
+                                <div class="carousel-demo-label">User</div>
+                                <div class="case-highlight-media">
+                                    <img src="images/case1.png" alt="Morse code reference table for STEPFUN"
+                                        loading="lazy">
+                                </div>
+                                <div class="carousel-demo-text" data-i18n="demo.image.a.user">根据该表生成"STEPFUN"的编码
+                                </div>
+                            </div>
+
+                            <div class="carousel-demo-agent">
+                                <p class="case-highlight-label">Thinking Process</p>
+                                <p class="case-highlight-text">
+                                    用户现在需要把每个字母转换成莫尔斯电码，先看每个字母在表中的编码。首先分解"STEPFUN"每个字母：S、T、E、P、F、U、N。</p>
+                                <ul class="case-highlight-list">
+                                    <li><strong>S</strong>：看右边第三列第一个，S是<span
+                                            class="morse-inline">&middot;&middot;&middot;</span>（三个点）。（一个短横）</li>
+                                    <li><strong>T</strong>：第三列第二个，T是<span class="morse-inline">-</span>。</li>
+                                    <li><strong>E</strong>：左边第一列第五个，E是<span class="morse-inline">&middot;</span>（一个点）。
+                                    </li>
+                                    <li><strong>P</strong>：中间列（J到R）中P对应的符号是<span
+                                            class="morse-inline">&middot;--&middot;</span>点、短横、短横、点）。</li>
+                                    <li><strong>F</strong>：最左侧列第六行，F的符号是<span
+                                            class="morse-inline">&middot;&middot;-&middot;</span>（两个点、一个短横、一个点）。</li>
+                                    <li><strong>U</strong>：最右侧列第三行，U的符号是<span
+                                            class="morse-inline">&middot;&middot;-</span>（两个点、一个短横）。
+                                    </li>
+                                    <li><strong>N</strong>：中间列（J到R）第五行，N的符号是<span
+                                            class="morse-inline">-&middot;</span>一个短横、一个点）。
+                                    </li>
+                                </ul>
+                                <p class="case-highlight-text">再将每个字母的编码按顺序拼接（字母间用空格分隔更清晰），"STEPFUN"的莫尔斯电码为：<span
+                                        class="morse-token">&middot;&middot;&middot;</span>
+                                    <span class="morse-token">-</span>
+                                    <span class="morse-token">&middot;</span>
+                                    <span class="morse-token">&middot;--&middot;</span>
+                                    <span class="morse-token">&middot;&middot;-&middot;</span>
+                                    <span class="morse-token">&middot;&middot;-</span>
+                                    <span class="morse-token">-&middot;</span>
+                                </p>
+                            </div>
+                            <div class="case-highlight-section">
+                                <p class="case-highlight-label">Final Answer</p>
+                                <div class="case-highlight-answer">
+                                    <span class="morse-token">&middot;&middot;&middot;</span>
+                                    <span class="morse-token">-</span>
+                                    <span class="morse-token">&middot;</span>
+                                    <span class="morse-token">&middot;--&middot;</span>
+                                    <span class="morse-token">&middot;&middot;-&middot;</span>
+                                    <span class="morse-token">&middot;&middot;-</span>
+                                    <span class="morse-token">-&middot;</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="1" data-pos="1">
+                            <div class="carousel-item-header">
+                                <div class="carousel-item-title" data-i18n="showcase.cat2">2.2 GUI 感知 / GUI Perception
+                                </div>
+                                <div class="case-pill">CASE 2</div>
+                            </div>
+                            <div class="carousel-demo-user">
+                                <div class="carousel-demo-label">User</div>
+                                <div class="case-highlight-media">
+                                    <img src="images/case2.png" alt="LaTeX editor tabs for dissertation chapters"
+                                        loading="lazy">
+                                </div>
+                                <div class="carousel-demo-text">TThe screenshot shows a snapshot of a LaTeX text editor
+                                    a student uses for writing their PhD dissertation. What is the
+                                    minimum number of chapter .tex files the student has opened?</div>
+                            </div>
+                            <div class="carousel-demo-agent">
+                                <p class="case-highlight-label">Thinking Process</p>
+                                <p class="case-highlight-text">So, let's look at the tabs at the top of the editor.</p>
+                                <ul class="case-highlight-list">
+                                    <li>chapte... (leftmost, maybe chapter1.tex as the active file in the center)</li>
+                                    <li>chapte... (next)</li>
+                                    <li>thesis... (this is thesis.tex, not a chapter)</li>
+                                    <li>chapte... (next)</li>
+                                    <li>chapte... (next)</li>
+                                    <li>chapte... (last one before the dark theme part)</li>
+                                </ul>
+                                <p class="case-highlight-text">To determine the minimum number of chapter .tex files
+                                    opened, we analyze the tabs at the top of the editor.</p>
+                                <ol class="case-highlight-list">
+                                    <li>Identify tabs: The image shows multiple tabs labeled chapte... (truncated for
+                                        "chapter...") and one tab labeled
+                                        thesis....</li>
+                                    <li>Exclude non-chapter tabs: The thesis... tab is not a chapter file, so we count
+                                        only the chapte... tabs.</li>
+                                    <li>Count chapter tabs: There are 5 visible chapte... tabs (excluding the thesis...
+                                        tab).</li>
+                                </ol>
+                            </div>
+                            <div class="case-highlight-section">
+                                <p class="case-highlight-label">Final Answer</p>
+                                <div class="case-highlight-answer">5</div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="2" data-pos="2">
+                            <div class="carousel-item-header">
+                                <div class="carousel-item-title" data-i18n="showcase.cat3">2.3 视觉识别 / Visual Recognition
+                                </div>
+                                <div class="case-pill">CASE 3</div>
+                            </div>
+                            <div class="carousel-demo-user">
+                                <div class="carousel-demo-label">User</div>
+                                <div class="case-highlight-media">
+                                    <img src="images/case3.png" alt="Out-of-focus monitor displaying HP logo"
+                                        loading="lazy">
+                                </div>
+                                <div class="carousel-demo-text">What is the brand name of the monitor in the image? What
+                                    is its encoding with a Caesar cipher with a left shift of 5.
+                                    Give your answer as a combined string.</div>
+                            </div>
+                            <div class="carousel-demo-agent">
+                                <p class="case-highlight-label">Thinking Process</p>
+                                <p class="case-highlight-text">Got it, let's break this down. First, find the monitor's
+                                    brand.</p>
+                                <p class="case-highlight-text">...</p>
+                                <p class="case-highlight-text">The logo on the monitor's base is HP.
+                                    Then, we need to do a Caesar cipher with a left shift of 5.</p>
+                                <p class="case-highlight-text">...</p>
+                                <ul class="case-highlight-list">
+                                    <li>First, H is the 8th letter (A=1, B=2... H=8). Left shift 5: 8-5=3 → C.</li>
+                                    <li>Then, P is the 16th letter. 16-5=11 → K.</li>
+                                </ul>
+                                <p class="case-highlight-text">So "HP" shifted left 5 is "CK".</p>
+                            </div>
+                            <div class="case-highlight-section">
+                                <p class="case-highlight-label">Final Answer</p>
+                                <div class="case-highlight-answer">HPCK</div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-index="3" data-pos="-1">
+                            <div class="carousel-item-header">
+                                <div class="carousel-item-title" data-i18n="showcase.cat4">2.4 图推理 / Graph Reasoning
+                                </div>
+                                <div class="case-pill">CASE 4</div>
+                            </div>
+                            <div class="carousel-demo-user">
+                                <div class="carousel-demo-label">User</div>
+                                <div class="case-highlight-media">
+                                    <img src="images/case4.png" alt="Weighted directed graph with labeled edges"
+                                        loading="lazy">
+                                </div>
+                                <div class="carousel-demo-text">How many edges have the shortest length?</div>
+                            </div>
+                            <div class="carousel-demo-agent">
+                                <p class="case-highlight-label">Thinking Process</p>
+                                <p class="case-highlight-text">To determine the number of edges with the shortest
+                                    length, we first identify the smallest edge weight in the diagram.</p>
+                                <p class="case-highlight-text">...</p>
+                                <p class="case-highlight-text">The smallest weight is 1. Next, we count all edges
+                                    labeled with 1:</p>
+                                <p class="case-highlight-text">...</p>
+                                <ul class="case-highlight-list">
+                                    <li><strong>A -> T</strong>: labeled 1</li>
+                                    <li><strong>T → X</strong>: labeled 1</li>
+                                    <li><strong>P → O</strong>: labeled 1</li>
+                                    <li><strong>W → X</strong>: labeled 1</li>
+                                </ul>
+                                <p class="case-highlight-text">...</p>
+                                <p class="case-highlight-text">No other edges have a weight of 1. Thus, there are 4
+                                    edges with the shortest length.</p>
+                            </div>
+                            <div class="case-highlight-section">
+                                <p class="case-highlight-label">Final Answer</p>
+                                <div class="case-highlight-answer">4</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" id="carousel-prev-btn">←</button>
+                    <div class="carousel-dots">
+                        <div class="carousel-dot active" data-index="0"></div>
+                        <div class="carousel-dot" data-index="1"></div>
+                        <div class="carousel-dot" data-index="2"></div>
+                        <div class="carousel-dot" data-index="3"></div>
+                    </div>
+                    <button class="carousel-arrow" id="carousel-next-btn">→</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="method" class="section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="section.method">Method</h2>
+
+                <div class="method-content">
+                    <div class="formula-section">
+                        <h3 class="subsection-title" data-i18n="method.arch.title">Architecture</h3>
+                        <ul class="case-highlight-list">
+                            <li data-i18n="method.arch.encoder">Visual Encoder: PE-lang (Language-Optimized Perception Encoder), 1.8B parameters.</li>
+                            <li data-i18n="method.arch.decoder">Decoder: Qwen3-8B.</li>
+                            <li data-i18n="method.arch.projector">Projector: Two consecutive stride-2 layers (resulting in 16× spatial downsampling).</li>
+                            <li data-i18n="method.arch.resolution">Resolution: Multi-crop strategy consisting of a 728×728 global view and multiple 504×504 local crops.</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-section">
+                        <h3 class="subsection-title" data-i18n="method.train.title">Training Pipeline</h3>
+
+                        <p class="paragraph" data-i18n="method.train.pretrain"><strong>Pre-training:</strong> Single-stage, fully unfrozen strategy using AdamW optimizer (Total: 1.2T tokens, 370K iterations).</p>
+                        <ul class="case-highlight-list">
+                            <li data-i18n="method.train.pretrain.p1">Phase 1: 900B tokens.</li>
+                            <li data-i18n="method.train.pretrain.p2">Phase 2: 300B tokens.</li>
+                        </ul>
+
+                        <p class="paragraph" data-i18n="method.train.sft"><strong>Supervised Finetuning (SFT):</strong> Two-stage approach (Total: ~226B tokens).</p>
+                        <ul class="case-highlight-list">
+                            <li data-i18n="method.train.sft.s1">Stage 1: 9:1 text-to-multimodal ratio (~190B tokens).</li>
+                            <li data-i18n="method.train.sft.s2">Stage 2: 1:1 text-to-multimodal ratio (~36B tokens).</li>
+                        </ul>
+
+                        <p class="paragraph" data-i18n="method.train.rl"><strong>Reinforcement Learning:</strong> Total &gt;1,400 iterations.</p>
+                        <ul class="case-highlight-list">
+                            <li data-i18n="method.train.rl.rlvr">RLVR: 600 iterations (Tasks: mathematics, geometry, physics, perception, grounding).</li>
+                            <li data-i18n="method.train.rl.rlhf">RLHF: 300 iterations (Task: open-ended generation).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- <section id="footer-section" class="section section-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3 class="footer-title" data-i18n="footer.cta.title">Get Started</h3>
+                        <p class="footer-text" data-i18n="footer.cta.desc">申请接入、联系合作或了解更多合规与试用流程。</p>
+                        <div class="cta-buttons">
+                            <a href="#" class="btn-primary" data-i18n="footer.cta.apply">Apply for Access</a>
+                            <a href="#" class="btn-secondary" data-i18n="footer.cta.contact">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3 class="footer-title" data-i18n="footer.roadmap.title">Roadmap</h3>
+                        <ul class="footer-list">
+                            <li data-i18n="footer.roadmap.r1">扩展更长上下文支持（256K+）</li>
+                            <li data-i18n="footer.roadmap.r2">完善多模态输入能力</li>
+                            <li data-i18n="footer.roadmap.r3">提升端侧推理效率</li>
+                            <li data-i18n="footer.roadmap.r4">发布更完整训练与评测报告</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 class="footer-title" data-i18n="footer.limits.title">Limitations</h3>
+                        <ul class="footer-list">
+                            <li data-i18n="footer.limits.l1">极端长链推理仍有不足</li>
+                            <li data-i18n="footer.limits.l2">跨域知识迁移需优化</li>
+                            <li data-i18n="footer.limits.l3">强对抗式场景表现待提升</li>
+                            <li data-i18n="footer.limits.l4">多工具协作与长时间运行稳定性持续优化中</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 StepFun. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <div class="control-panel" id="control-panel">
+        <div class="control-header">
+            <h4>Style Controls</h4>
+            <button class="control-toggle" onclick="togglePanel()">−</button>
+        </div>
+        <div class="control-body" id="control-body">
+            <div class="control-section-title">布局 / Layout</div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Content Width</span>
+                    <span class="control-value" id="width-value">860px</span>
+                </div>
+                <input type="range" class="control-input" id="width-input" min="600" max="1200" value="860"
+                    oninput="updateStyle('content-width', this.value, 'px')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Font Size</span>
+                    <span class="control-value" id="font-size-value">17px</span>
+                </div>
+                <input type="range" class="control-input" id="font-size-input" min="14" max="22" value="17"
+                    oninput="updateStyle('font-size', this.value, 'px')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Section Gap</span>
+                    <span class="control-value" id="section-gap-value">40px</span>
+                </div>
+                <input type="range" class="control-input" id="section-gap-input" min="20" max="80" value="40"
+                    oninput="updateStyle('section-gap', this.value, 'px')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Border Radius</span>
+                    <span class="control-value" id="radius-value">20px</span>
+                </div>
+                <input type="range" class="control-input" id="radius-input" min="0" max="40" value="20"
+                    oninput="updateStyle('radius', this.value, 'px')">
+            </div>
+
+            <div class="control-section-title">主题色 / Theme Color</div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Accent Hue</span>
+                    <span class="control-value" id="accent-h-value">218</span>
+                </div>
+                <input type="range" class="control-input" id="accent-h-input" min="0" max="360" value="218"
+                    oninput="updateStyle('accent-h', this.value, '')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Accent Saturation</span>
+                    <span class="control-value" id="accent-s-value">80%</span>
+                </div>
+                <input type="range" class="control-input" id="accent-s-input" min="0" max="100" value="80"
+                    oninput="updateStyle('accent-s', this.value, '%')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Accent Lightness</span>
+                    <span class="control-value" id="accent-l-value">46%</span>
+                </div>
+                <input type="range" class="control-input" id="accent-l-input" min="30" max="60" value="46"
+                    oninput="updateStyle('accent-l', this.value, '%')">
+            </div>
+
+            <div class="control-section-title">视觉效果 / Visual Effects</div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Card Opacity</span>
+                    <span class="control-value" id="card-opacity-value">1</span>
+                </div>
+                <input type="range" class="control-input" id="card-opacity-input" min="0.5" max="1" step="0.05"
+                    value="1" oninput="updateStyle('card-opacity', this.value, '')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Shadow Strength</span>
+                    <span class="control-value" id="shadow-strength-value">0.08</span>
+                </div>
+                <input type="range" class="control-input" id="shadow-strength-input" min="0" max="0.2" step="0.01"
+                    value="0.08" oninput="updateStyle('shadow-strength', this.value, '')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Gloss Intensity</span>
+                    <span class="control-value" id="gloss-intensity-value">0.7</span>
+                </div>
+                <input type="range" class="control-input" id="gloss-intensity-input" min="0" max="1" step="0.1"
+                    value="0.7" oninput="updateStyle('gloss-intensity', this.value, '')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Texture Opacity</span>
+                    <span class="control-value" id="texture-opacity-value">0.03</span>
+                </div>
+                <input type="range" class="control-input" id="texture-opacity-input" min="0" max="0.1" step="0.01"
+                    value="0.03" oninput="updateStyle('texture-opacity', this.value, '')">
+            </div>
+
+            <div class="control-section-title">预设 / Presets</div>
+            <div class="control-presets">
+                <button class="control-preset-btn active" onclick="applyPreset('classic')">经典蓝</button>
+                <button class="control-preset-btn" onclick="applyPreset('bright')">明亮蓝</button>
+                <button class="control-preset-btn" onclick="applyPreset('deep')">深沉蓝</button>
+                <button class="control-preset-btn" onclick="applyPreset('soft')">柔和蓝</button>
+            </div>
+
+            <button class="control-reset" onclick="resetAllStyles()">Reset to Default</button>
+            <button class="control-copy" onclick="copyAllParams()">Copy CSS Variables</button>
+        </div>
+    </div> -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>

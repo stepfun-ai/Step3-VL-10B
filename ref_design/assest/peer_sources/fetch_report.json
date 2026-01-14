@@ -1,0 +1,269 @@
+{
+  "https://z.ai/blog/glm-4.5": {
+    "url": "https://z.ai/blog/glm-4.5",
+    "html": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/page.html",
+    "assets": {
+      "css": [
+        {
+          "url": "https://z.ai/blog/_next/static/css/438914ea7d1862ee.css",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/css/438914ea7d1862ee.css"
+        }
+      ],
+      "js": [
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/4bd1b696-cf72ae8a39fa05aa.js"
+        },
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/964-4a8ec07565aa6cef.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/964-4a8ec07565aa6cef.js"
+        },
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/main-app-69496ec153f69d22.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/main-app-69496ec153f69d22.js"
+        },
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/766-d1276df37bc28ef6.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/766-d1276df37bc28ef6.js"
+        },
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/app/glm-4.5/page-c3fdf903853b6c32.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/page-c3fdf903853b6c32.js"
+        },
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/polyfills-42372ed130431b0a.js"
+        },
+        {
+          "url": "https://z.ai/blog/_next/static/chunks/webpack-1861e4b9f9e4323f.js",
+          "path": "ref_design/assest/peer_sources/z.ai-blog-glm-4.5/js/webpack-1861e4b9f9e4323f.js"
+        }
+      ]
+    },
+    "errors": []
+  },
+  "https://moonshotai.github.io/Kimi-K2/": {
+    "url": "https://moonshotai.github.io/Kimi-K2/",
+    "html": "ref_design/assest/peer_sources/moonshotai.github.io-Kimi-K2/page.html",
+    "assets": {
+      "css": [
+        {
+          "url": "https://statics.moonshot.cn/kimi-blog/assets/index-LguKddU7.css",
+          "path": "ref_design/assest/peer_sources/moonshotai.github.io-Kimi-K2/css/index-LguKddU7.css"
+        }
+      ],
+      "js": [
+        {
+          "url": "https://statics.moonshot.cn/kimi-blog/assets/index-C-2eqP6Y.js",
+          "path": "ref_design/assest/peer_sources/moonshotai.github.io-Kimi-K2/js/index-C-2eqP6Y.js"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-7L893FXX5Z",
+          "path": "ref_design/assest/peer_sources/moonshotai.github.io-Kimi-K2/js/js_id_G-7L893FXX5Z"
+        }
+      ]
+    },
+    "errors": []
+  },
+  "https://openai.com/zh-Hans-CN/index/introducing-gpt-5-2/": {
+    "url": "https://openai.com/zh-Hans-CN/index/introducing-gpt-5-2/",
+    "html": null,
+    "assets": {
+      "css": [],
+      "js": []
+    },
+    "errors": [
+      "html_fetch_error: HTTP Error 403: Forbidden"
+    ]
+  },
+  "https://www.anthropic.com/news/claude-opus-4-5": {
+    "url": "https://www.anthropic.com/news/claude-opus-4-5",
+    "html": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/page.html",
+    "assets": {
+      "css": [
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/9ef3f201fb4c8030.css",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/css/9ef3f201fb4c8030.css"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/d01d4651f1fe3a5d.css",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/css/d01d4651f1fe3a5d.css"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/75f1e332600e6b96.css",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/css/75f1e332600e6b96.css"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/509085f8d765c683.css",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/css/509085f8d765c683.css"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/94371e9eef46cc2b.css",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/css/94371e9eef46cc2b.css"
+        }
+      ],
+      "js": [
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/6c3eff71c8dd3f35.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/6c3eff71c8dd3f35.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/d0300bffb79131f2.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/d0300bffb79131f2.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/08dcfc3b15383cd6.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/08dcfc3b15383cd6.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/turbopack-0091b89258c47288.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/turbopack-0091b89258c47288.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/d96012bcfc98706a.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/d96012bcfc98706a.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/d80b3790a119a285.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/d80b3790a119a285.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/1fb574e7be3f9a05.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/1fb574e7be3f9a05.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/177e1cabb8223520.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/177e1cabb8223520.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/c1896c986be1a2e2.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/c1896c986be1a2e2.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/63a39927e5ba1b15.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/63a39927e5ba1b15.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/5a54cbc61310f12f.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/5a54cbc61310f12f.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/7009d4092adf49c5.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/7009d4092adf49c5.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/2fd2aa01a4bc9178.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/2fd2aa01a4bc9178.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/5c1988096a7b174a.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/5c1988096a7b174a.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/ddb5bea1e84ef3db.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/ddb5bea1e84ef3db.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/9959115678cad149.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/9959115678cad149.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/ec60785b1e42b5f0.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/ec60785b1e42b5f0.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/630870b77208f43d.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/630870b77208f43d.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/25e0e40fd60eaf12.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/25e0e40fd60eaf12.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/6c680011ff6c5ba2.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/6c680011ff6c5ba2.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/2e3229a62c65aaec.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/2e3229a62c65aaec.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/970df6eb64a0adda.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/970df6eb64a0adda.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/dabacb64939959b3.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/dabacb64939959b3.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/1962982119ba7bb0.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/1962982119ba7bb0.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/ca184bae2cf15209.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/ca184bae2cf15209.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/1815ce47fc23f8f1.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/1815ce47fc23f8f1.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/2c9eb3077aa18f16.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/2c9eb3077aa18f16.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/33647e5ba6496195.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/33647e5ba6496195.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/a6dad97d9634a72d.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/a6dad97d9634a72d.js"
+        },
+        {
+          "url": "https://www.anthropic.com/_next/static/chunks/55ee5a30d5bf1901.js",
+          "path": "ref_design/assest/peer_sources/www.anthropic.com-news-claude-opus-4-5/js/55ee5a30d5bf1901.js"
+        }
+      ]
+    },
+    "errors": []
+  },
+  "https://deepmind.google/models/gemini/pro/": {
+    "url": "https://deepmind.google/models/gemini/pro/",
+    "html": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/page.html",
+    "assets": {
+      "css": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/css/css2_family_Google_Sans_Flex_opsz_wght_6..144_1..1000_display_swap"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Google+Symbols:opsz,wght,FILL,GRAD,ROND@48,100..300,0..1,0,100&display=block",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/css/css2_family_Google_Symbols_opsz_wght_FILL_GRAD_ROND_48_100..300_0..1_0_100_display_block"
+        },
+        {
+          "url": "https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/css/cookienotificationbar.min.css"
+        },
+        {
+          "url": "https://deepmind.google/static/dist/css/site.2adcd4d262a9d0351cb6.css",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/css/site.2adcd4d262a9d0351cb6.css"
+        }
+      ],
+      "js": [
+        {
+          "url": "https://deepmind.google/static/dist/site/site-dc657ebc6d678703ec4d.js",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/js/site-dc657ebc6d678703ec4d.js"
+        },
+        {
+          "url": "https://www.gstatic.com/glue/v27_1/material-components-web.min.js",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/js/material-components-web.min.js"
+        },
+        {
+          "url": "https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.js",
+          "path": "ref_design/assest/peer_sources/deepmind.google-models-gemini-pro/js/cookienotificationbar.min.js"
+        }
+      ]
+    },
+    "errors": []
+  }
+}

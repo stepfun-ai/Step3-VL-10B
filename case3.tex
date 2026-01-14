@@ -1,0 +1,30 @@
+%% Case 3: Texas Hold'em
+\large \textbf{Case 3: Low-Resolution Visual Detail Recognition}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.t55\textwidth]{cases/case3_monitor.png}
+\caption{Out-of-focus Photo}
+\label{fig:case3_monitor}
+\end{figure}
+
+\begin{caseprompt}
+What is the brand name of the monitor in the image? What is it's encoding with a Caesar cipher with a left shift of 5. Give your answer as a combined string.
+\end{caseprompt}
+
+\begin{casethinking}
+Got it, let's break this down. First, find the monitor's brand. \\
+\textbf{$\dots$} \\
+The logo on the monitor's base is HP. \\
+Then, we need to do a Caesar cipher with a left shift of 5. \\
+\textbf{$\dots$}
+\begin{itemize}[leftmargin=*]
+    \item First, H is the 8th letter (A=1, B=2$\dots$ H=8). Left shift 5: 8-5=3 → C.
+    \item Then, P is the 16th letter. 16-5=11 → K.
+\end{itemize}
+So "HP" shifted left 5 is "CK".
+\end{casethinking}
+
+\begin{caseanswer}
+HPCK
+\end{caseanswer}

@@ -1,0 +1,29 @@
+
+\begin{caseprompt}
+\begin{CJK*}{UTF8}{gbsn}
+根据该表生成"STEPFUN"的编码
+\end{CJK*}
+\end{caseprompt}
+
+\begin{casethinking}
+
+\begin{CJK*}{UTF8}{gbsn}
+用户现在需要把每个字母转换成莫尔斯电码，先看每个字母在表中的编码。首先分解"STEPFUN"每个字母：S、T、E、P、F、U、N。
+先逐个找：
+\begin{itemize}[leftmargin=*]
+    \item S：看右边第三列第一个，S是$\bullet\bullet\bullet$（三个点）
+    \item T：第三列第二个，T是$-$（一个短横）
+    \item E：左边第一列第五个，E是$\bullet$（一个点）
+    \item P：中间列（J到R）中P对应的符号是$\bullet--\bullet$（点、短横、短横、点）
+    \item F：最左侧列第六行，F的符号是$\bullet\bullet-\bullet$（两个点、一个短横、一个点）
+    \item U：最右侧列第三行，U的符号是$\bullet\bullet-$（两个点、一个短横）
+    \item N：中间列（J到R）第五行，N的符号是$-\bullet$（一个短横、一个点）
+\end{itemize}
+最后，将每个字母的编码按顺序拼接（字母间用空格分隔更清晰），"STEPFUN"的莫尔斯电码为：
+$\bullet\bullet\bullet \quad - \quad \bullet \quad \bullet--\bullet \quad \bullet\bullet-\bullet \quad \bullet\bullet- \quad -\bullet$
+\end{CJK*}
+\end{casethinking}
+
+\begin{caseanswer}
+$\bullet\bullet\bullet \quad - \quad \bullet \quad \bullet--\bullet \quad \bullet\bullet-\bullet \quad \bullet\bullet- \quad -\bullet$
+\end{caseanswer}

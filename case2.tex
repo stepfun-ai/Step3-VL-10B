@@ -1,0 +1,36 @@
+%% Case 2: LaTeX Editor
+\large \textbf{Case 2: Fine-grained Visual Counting and Semantic Filtering}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.65\textwidth]{cases/case2_code.png}
+\caption{Screenshot of the Compiler}
+\label{fig:case2_code}
+\end{figure}
+
+\begin{caseprompt}
+The screenshot shows a snapshot of a LaTeX text editor a student uses for writing their PhD dissertation. What is the minimum number of chapter .tex files the student has opened?
+\end{caseprompt}
+
+\begin{casethinking}
+So, let's look at the tabs at the top of the editor. \\
+\textbf{$\dots$}\\
+The visible tabs are:
+\begin{itemize}[leftmargin=*]
+    \item chapte$\dots$ (leftmost, maybe chapter1.tex as the active file in the center)
+    \item chapte$\dots$ (next)
+    \item thesis$\dots$ (this is thesis.tex, not a chapter)
+    \item chapte$\dots$ (next)
+    \item chapte$\dots$ (next)
+    \item chapte$\dots$ (last one before the dark theme part)
+\end{itemize}
+\textbf{$\dots$}\\
+To determine the minimum number of chapter .tex files opened, we analyze the tabs at the top of the editor.\\
+1. Identify tabs: The image shows multiple tabs labeled chapte$\dots$ (truncated for "chapter$\dots$") and one tab labeled thesis$\dots$.  \\
+2. Exclude non-chapter tabs: The thesis$\dots$ tab is not a chapter file, so we count only the chapte$\dots$ tabs. \\
+3. Count chapter tabs: There are 5 visible chapte$\dots$ tabs (excluding the thesis$\dots$ tab).
+\end{casethinking}
+
+\begin{caseanswer}
+5
+\end{caseanswer}
