@@ -118,47 +118,53 @@ STEP3-VL-10B delivers best-in-class performance across major multimodal benchmar
 
 ## 🛠️ Quick Start
 
-### Requirements
+### Inference with Hugging Face Transformers
 
-To run STEP3-VL-10B efficiently, we recommend setting up a Python environment (>=3.10) with **vLLM**:
-
-```bash
-pip install vllm>=0.6.3
-```
-
-### vLLM Inference Example
-
-Below is a minimal example to load the model and generate a response using vLLM's chat API.
+We introduce how to use our model at inference stage using transformers library. It is recommended to use python=3.10, torch>=2.1.0, and transformers=4.57.0 as the development environment.We currently only support bf16 inference, and multi-patch for image preprocessing is supported by default. This behavior is aligned with vllm and sglang.
 
 ```python
-from vllm import LLM, SamplingParams
+from transformers import AutoProcessor, AutoModelForCausalLM
 
-# 1. Load the model
-# Ensure you have ~24GB VRAM for BF16 inference
-llm = LLM(
-    model="stepfun-ai/Step3-VL-10B",
-    trust_remote_code=True,
-    gpu_memory_utilization=0.95
-)
 
-# 2. Prepare input (Supports local paths or URLs)
+key_mapping = {
+    "^vision_model": "model.vision_model",
+    r"^model(?!\.(language_model|vision_model))": "model.language_model",
+    "vit_large_projector": "model.vit_large_projector",
+}
+
+model_path = "stepfun-ai/Step3-VL-10B-Base"
+
+processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
+
 messages = [
     {
         "role": "user",
         "content": [
-            {"type": "image", "image": "[https://modelscope.oss-cn-beijing.aliyuncs.com/resource/demo.jpg](https://modelscope.oss-cn-beijing.aliyuncs.com/resource/demo.jpg)"},
-            {"type": "text", "text": "Describe this image in detail."}
+            {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/bee.jpg"},
+            {"type": "text", "text": "What's in this picture?"}
         ]
-    }
+    },
 ]
 
-# 3. Generate
-sampling_params = SamplingParams(temperature=0.1, max_tokens=1024)
-outputs = llm.chat(messages=messages, sampling_params=sampling_params)
+model = AutoModelForCausalLM.from_pretrained(
+    model_path,
+    trust_remote_code=True,
+    device_map="auto",
+    torch_dtype="auto",
+    key_mapping=key_mapping).eval()
 
-print(f"Output: {outputs[0].outputs[0].text}")
+
+inputs = processor.apply_chat_template(
+    messages, add_generation_prompt=True, tokenize=True,
+    return_dict=True, return_tensors="pt"
+).to(model.device)
+
+
+generate_ids = model.generate(**inputs, max_new_tokens=1024, do_sample=False)
+decoded = processor.decode(generate_ids[0, inputs["input_ids"].shape[-1] :], skip_special_tokens=True)
+
+print(decoded)
 ```
-
 
 ## 📜 Citation
 
