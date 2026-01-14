@@ -132,7 +132,7 @@ key_mapping = {
     "vit_large_projector": "model.vit_large_projector",
 }
 
-model_path = "stepfun-ai/Step3-VL-10B-Base"
+model_path = "stepfun-ai/Step3-VL-10B"
 
 processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
 
