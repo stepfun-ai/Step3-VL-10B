@@ -1,0 +1,21 @@
+{
+  "name": "step3-vl-10b-gh-pages",
+  "version": "1.0.0",
+  "description": "Step3-VL-10B Model Showcase Website",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/copy-assets.js",
+    "preview": "vite preview",
+    "deploy": "npm run build && node scripts/upload-to-oss.js",
+    "upload": "node scripts/upload-to-oss.js"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vite-plugin-html": "^3.2.2"
+  },
+  "dependencies": {
+    "ali-oss": "^6.20.0",
+    "dotenv": "^16.3.1"
+  }
+}
