@@ -9,7 +9,7 @@
 
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HF-StepFun/STEP3--VL--10B-blue)](https://huggingface.co/collections/stepfun-ai/step3-vl-10b)
 [![ModelScope](https://img.shields.io/badge/ModelScope-StepFun/STEP3--VL--10B-624aff)](https://modelscope.cn/collections/stepfun-ai/Step3-VL-10B)
-[![Paper](https://img.shields.io/badge/Paper-Arxiv-red)]()
+[![Paper](https://img.shields.io/badge/Paper-Arxiv-red)](https://github.com/stepfun-ai/Step3-VL-10B/blob/main/paper/STEP3-VL-10B%20Technical%20Report.pdf)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green)]()
 
 [**Introduction**](#introduction) | [**Performance**](#performance) | [**Quick Start**](#quick-start) | [**Citation**](#citation)
