@@ -12,11 +12,9 @@
 [![Paper](https://img.shields.io/badge/Paper-Arxiv-red)](https://github.com/stepfun-ai/Step3-VL-10B/blob/main/paper/STEP3-VL-10B%20Technical%20Report.pdf)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green)]()
 
-[**Introduction**](#introduction) | [**Performance**](#performance) | [**Quick Start**](#quick-start) | [**Citation**](#citation)
-
 </div>
 
-## 🚀 Introduction {#introduction}
+## 🚀 Introduction
 
 **STEP3-VL-10B** is a lightweight open-source foundation model designed to redefine the trade-off between compact efficiency and frontier-level multimodal intelligence. Despite its compact **10B parameter footprint**, STEP3-VL-10B excels in **visual perception**, **complex reasoning**, and **human-centric alignment**. It consistently outperforms models under the 10B scale and rivals or surpasses significantly larger open-weights models (**10×–20× its size**), such as GLM-4.6V (106B-A12B), Qwen3-VL-Thinking (235B-A22B), and top-tier proprietary flagships like Gemini 2.5 Pro and Seed-1.5-VL.
 
@@ -38,7 +36,7 @@ The success of STEP3-VL-10B is driven by two key strategic designs:
 | **STEP3-VL-10B** | Chat | [🤗 Download](https://huggingface.co/stepfun-ai/Step3-VL-10B) | [🤖 Download](https://modelscope.cn/models/stepfun-ai/Step3-VL-10B) |
 
 
-## 📊 Performance {#performance}
+## 📊 Performance
 
 STEP3-VL-10B delivers best-in-class performance across major multimodal benchmarks, establishing a new performance standard for compact models. The results demonstrate that STEP3-VL-10B is the **most powerful open-source model in the 10B parameter class**.
 
@@ -116,7 +114,7 @@ STEP3-VL-10B delivers best-in-class performance across major multimodal benchmar
   - **PaCoRe Training:** 500 iterations (Context length: 64K max sequence).
 
 
-## 🛠️ Quick Start {#quick-start}
+## 🛠️ Quick Start
 
 ### Inference with Hugging Face Transformers
 
@@ -166,7 +164,7 @@ decoded = processor.decode(generate_ids[0, inputs["input_ids"].shape[-1] :], ski
 print(decoded)
 ```
 
-## 📜 Citation {#citation}
+## 📜 Citation
 
 If you find this project useful in your research, please cite our technical report:
 
