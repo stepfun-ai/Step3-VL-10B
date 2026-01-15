@@ -169,7 +169,15 @@ print(decoded)
 If you find this project useful in your research, please cite our technical report:
 
 ```tex
-
+@misc{huang2026step3vl10btechnicalreport,
+      title={STEP3-VL-10B Technical Report}, 
+      author={Ailin Huang and Chengyuan Yao and Chunrui Han and Fanqi Wan and Hangyu Guo and Haoran Lv and Hongyu Zhou and Jia Wang and Jian Zhou and Jianjian Sun and Jingcheng Hu and Kangheng Lin and Liang Zhao and Mitt Huang and Song Yuan and Wenwen Qu and Xiangfeng Wang and Yanlin Lai and Yingxiu Zhao and Yinmin Zhang and Yukang Shi and Yuyang Chen and Zejia Weng and Ziyang Meng and Ang Li and Aobo Kong and Bo Dong and Changyi Wan and David Wang and Di Qi and Dingming Li and En Yu and Guopeng Li and Haiquan Yin and Han Zhou and Hanshan Zhang and Haolong Yan and Hebin Zhou and Hongbo Peng and Jiaran Zhang and Jiashu Lv and Jiayi Fu and Jie Cheng and Jie Zhou and Jisheng Yin and Jingjing Xie and Jingwei Wu and Jun Zhang and Junfeng Liu and Kaijun Tan and Kaiwen Yan and Liangyu Chen and Lina Chen and Mingliang Li and Qian Zhao and Quan Sun and Shaoliang Pang and Shengjie Fan and Shijie Shang and Siyuan Zhang and Tianhao You and Wei Ji and Wuxun Xie and Xiaobo Yang and Xiaojie Hou and Xiaoran Jiao and Xiaoxiao Ren and Xiangwen Kong and Xin Huang and Xin Wu and Xing Chen and Xinran Wang and Xuelin Zhang and Yana Wei and Yang Li and Yanming Xu and Yeqing Shen and Yuang Peng and Yue Peng and Yu Zhou and Yusheng Li and Yuxiang Yang and Yuyang Zhang and Zhe Xie and Zhewei Huang and Zhenyi Lu and Zhimin Fan and Zihui Cheng and Daxin Jiang and Qi Han and Xiangyu Zhang and Yibo Zhu and Zheng Ge},
+      year={2026},
+      eprint={2601.09668},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.09668}, 
+}
 ```
 
 ## 📄 License
