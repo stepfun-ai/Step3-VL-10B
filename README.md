@@ -164,6 +164,15 @@ decoded = processor.decode(generate_ids[0, inputs["input_ids"].shape[-1] :], ski
 print(decoded)
 ```
 
+## 💬 Community
+
+Scan the QR code to join our WeChat group for technical discussions and updates.
+
+<div align="center">
+  <img src="figures/wechat_group.png" alt="WeChat Group" width="300"/>
+  <p><b>Step3-VL Technical Support Group</b></p>
+</div>
+
 ## 📜 Citation
 
 If you find this project useful in your research, please cite our technical report:
