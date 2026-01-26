@@ -12,7 +12,7 @@ from pacore.utils import async_chat_completion
 app = FastAPI()
 
 # --- 配置区域 ---
-API_BASE = "http://182.44.113.23:22002/v1/chat/completions"
+API_BASE = "http://localhost:22002/v1/chat/completions"
 MODEL_NAME = "./Step3-VL-10B"
 
 class QueryRequest(BaseModel):
