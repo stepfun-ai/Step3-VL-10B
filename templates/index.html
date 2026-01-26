@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaCoRe VL 多模态协同演示</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .markdown-body pre { background: #f3f4f6; padding: 10px; border-radius: 6px; overflow-x: auto; }
+        .thinking-process { border-left: 4px solid #3b82f6; }
+        .final-answer { border-left: 4px solid #10b981; }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px; width: 16px; border-radius: 50%; background: #2563eb; cursor: pointer; margin-top: -6px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: #e5e7eb; border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 h-screen flex flex-col">
+
+    <div id="app" class="flex-1 flex flex-col max-w-5xl mx-auto w-full p-4">
+        <header class="mb-4 text-center">
+            <h1 class="text-3xl font-bold text-gray-800">PaCoRe <span class="text-blue-600">VL</span></h1>
+            <p class="text-gray-500 mt-1 text-sm">多模态并行协同推理助手</p>
+        </header>
+
+        <div class="flex-1 overflow-y-auto space-y-6 pb-4 scroll-smooth pr-2" ref="chatContainer">
+            <div v-for="(msg, index) in chatHistory" :key="index">
+                <div v-if="msg.role === 'user'" class="flex justify-end">
+                    <div class="bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tr-none max-w-[80%] shadow-md flex flex-col items-end">
+                        <img v-if="msg.image" :src="msg.image" class="max-w-xs max-h-60 rounded-lg mb-2 border-2 border-white/20">
+                        <span>{{ msg.content }}</span>
+                    </div>
+                </div>
+
+                <div v-else class="flex flex-col items-start max-w-[95%]">
+                    <div v-for="(round, rIdx) in msg.rounds" :key="rIdx" class="w-full mb-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded bg-gray-200 text-gray-700">
+                                {{ round.is_final ? (round.index === 0 ? 'Standard Response' : 'Final Synthesis') : `Round ${rIdx + 1} Exploration` }}
+                            </span>
+                            <span class="text-xs text-gray-400" v-if="!round.is_final">并行生成了 {{ round.trajectories.length }} 条思考路径</span>
+                        </div>
+
+                        <div v-if="!round.is_final" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div v-for="(traj, tIdx) in round.trajectories" :key="tIdx"
+                                 class="bg-white border border-gray-200 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow text-sm">
+                                <div class="font-semibold text-blue-600 mb-1">Path {{ tIdx + 1 }}</div>
+                                <details class="mb-2" v-if="traj.reasoning">
+                                    <summary class="cursor-pointer text-gray-400 hover:text-gray-600 text-xs select-none">查看思考过程 (CoT)</summary>
+                                    <div class="mt-2 p-2 bg-gray-50 rounded text-gray-600 text-xs font-mono whitespace-pre-wrap max-h-40 overflow-y-auto">
+                                        {{ traj.reasoning }}
+                                    </div>
+                                </details>
+                                <div class="markdown-body text-gray-800" v-html="renderMd(traj.content)"></div>
+                            </div>
+                        </div>
+
+                        <div v-else class="w-full bg-white border border-green-200 rounded-lg p-5 shadow-sm final-answer">
+                             <div v-for="(traj, tIdx) in round.trajectories" :key="tIdx" class="mb-6 last:mb-0">
+                                <details class="mb-4" v-if="traj.reasoning">
+                                    <summary class="cursor-pointer text-green-600 text-sm font-medium select-none flex items-center gap-1">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        {{ round.index === 0 ? '查看思考过程' : '查看协同综述思考过程' }}
+                                    </summary>
+                                    <div class="mt-2 p-3 bg-green-50 rounded text-gray-700 text-sm font-mono whitespace-pre-wrap border border-green-100">
+                                        {{ traj.reasoning }}
+                                    </div>
+                                </details>
+                                <div class="markdown-body text-base leading-relaxed" v-html="renderMd(traj.content || '')"></div>
+                                <hr v-if="tIdx < round.trajectories.length - 1" class="my-4 border-gray-200">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="msg.loading" class="flex items-center gap-2 text-gray-400 text-sm mt-2 ml-1">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-75"></div>
+                            <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-150"></div>
+                        </div>
+                        <span>PaCoRe VL 正在观察与思考...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-4 mt-2">
+
+            <div v-if="previewImage" class="mb-3 relative inline-block">
+                <img :src="previewImage" class="h-24 rounded-lg border border-gray-300 shadow-sm">
+                <button @click="clearImage" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 shadow-md">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-6 mb-3 pb-3 border-b border-gray-100">
+                <label class="flex items-center cursor-pointer select-none group">
+                    <div class="relative">
+                        <input type="checkbox" v-model="usePacore" class="sr-only">
+                        <div class="block w-10 h-6 bg-gray-300 rounded-full transition-colors group-hover:bg-gray-400" :class="{'!bg-blue-600': usePacore}"></div>
+                        <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform" :class="{'translate-x-4': usePacore}"></div>
+                    </div>
+                    <span class="ml-3 text-sm font-medium text-gray-700">PaCoRe 协同模式</span>
+                </label>
+
+                <div class="flex items-center gap-3 transition-opacity duration-300" :class="{'opacity-100': usePacore, 'opacity-30 pointer-events-none': !usePacore}">
+                    <span class="text-sm text-gray-600 font-medium whitespace-nowrap">发散思维数: <span class="text-blue-600 font-bold w-6 inline-block">{{ parallelNum }}</span></span>
+                    <input type="range" v-model.number="parallelNum" min="2" max="10" step="1" class="w-32 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+            </div>
+
+            <div class="relative flex gap-2">
+                <button @click="$refs.fileInput.click()" class="p-3 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="上传图片">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </button>
+                <input type="file" ref="fileInput" accept="image/*" class="hidden" @change="handleFileChange">
+
+                <input type="text" v-model="inputQuery" @keydown.enter="sendQuery"
+                    placeholder="输入问题 (例如：分析这张图片里的数据 trend)..."
+                    :disabled="isLoading"
+                    class="flex-1 pl-4 pr-24 py-3 bg-gray-50 rounded-lg border border-gray-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all disabled:opacity-50">
+                <button @click="sendQuery" :disabled="isLoading || (!inputQuery && !previewImage)"
+                    class="absolute right-2 top-1.5 bottom-1.5 bg-blue-600 text-white px-5 rounded-md font-medium hover:bg-blue-700 disabled:bg-gray-400 transition-colors shadow-sm text-sm">
+                    发送
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, nextTick } = Vue;
+
+        createApp({
+            setup() {
+                const inputQuery = ref('');
+                const chatHistory = ref([]);
+                const isLoading = ref(false);
+                const chatContainer = ref(null);
+
+                const usePacore = ref(true);
+                const parallelNum = ref(3);
+
+                // 图片相关
+                const fileInput = ref(null);
+                const previewImage = ref(null);
+
+                const renderMd = (text) => {
+                    return marked.parse(text || '');
+                };
+
+                const handleFileChange = (event) => {
+                    const file = event.target.files[0];
+                    if (!file) return;
+
+                    // 转 Base64 用于预览和发送
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        previewImage.value = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+
+                    // 清空 input 允许重复选同一文件
+                    event.target.value = '';
+                };
+
+                const clearImage = () => {
+                    previewImage.value = null;
+                };
+
+                const sendQuery = async () => {
+                    if ((!inputQuery.value.trim() && !previewImage.value) || isLoading.value) return;
+
+                    const prompt = inputQuery.value;
+                    const image = previewImage.value; // 保存当前的图片
+
+                    // 清空输入
+                    inputQuery.value = '';
+                    previewImage.value = null;
+                    isLoading.value = true;
+
+                    chatHistory.value.push({
+                        role: 'user',
+                        content: prompt,
+                        image: image // 记录历史图片
+                    });
+
+                    const aiMsg = { role: 'ai', rounds: [], loading: true };
+                    chatHistory.value.push(aiMsg);
+
+                    try {
+                        const response = await fetch('/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                prompt,
+                                image, // 发送 Base64 图片
+                                use_pacore: usePacore.value,
+                                parallel_num: parallelNum.value
+                            })
+                        });
+
+                        const reader = response.body.getReader();
+                        const decoder = new TextDecoder();
+
+                        while (true) {
+                            const { done, value } = await reader.read();
+                            if (done) break;
+                            const chunk = decoder.decode(value, { stream: true });
+                            const lines = chunk.split('\n');
+                            for (const line of lines) {
+                                if (!line.trim()) continue;
+                                try {
+                                    handleStreamData(aiMsg, JSON.parse(line));
+                                    scrollToBottom();
+                                } catch (e) {}
+                            }
+                        }
+                    } catch (err) {
+                        aiMsg.rounds.push({
+                            is_final: true,
+                            trajectories: [{ content: `Error: ${err.message}` }]
+                        });
+                    } finally {
+                        aiMsg.loading = false;
+                        isLoading.value = false;
+                    }
+                };
+
+                const handleStreamData = (msg, data) => {
+                    if (data.type === 'round_start') {
+                        msg.rounds.push({
+                            index: data.round_index,
+                            is_final: data.is_final,
+                            trajectories: []
+                        });
+                    } else if (data.type === 'trajectory') {
+                        const currentRound = msg.rounds[msg.rounds.length - 1];
+                        if (currentRound) {
+                            currentRound.trajectories.push({
+                                content: data.content,
+                                reasoning: data.reasoning
+                            });
+                        }
+                    }
+                };
+
+                const scrollToBottom = () => {
+                    nextTick(() => {
+                        if (chatContainer.value) {
+                            chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
+                        }
+                    });
+                };
+
+                return {
+                    inputQuery, chatHistory, isLoading, chatContainer,
+                    usePacore, parallelNum,
+                    fileInput, previewImage, handleFileChange, clearImage,
+                    sendQuery, renderMd
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
